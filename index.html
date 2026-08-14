@@ -15,7 +15,24 @@
   <title>VerAcist — Gestão de Assistências Técnicas</title>
 </head>
 <body>
-<div id="app" class="app">
+<section id="authScreen" class="auth-screen">
+  <div class="auth-shade"></div>
+  <div class="auth-card">
+    <img src="assets/veraci-logo-white.png" alt="Veraci" class="auth-logo">
+    <p class="eyebrow light">PORTAL VERACIST · CLOUD 1.1</p>
+    <h1>Gestão de Assistências Técnicas</h1>
+    <p class="auth-copy">Acesse com o usuário cadastrado no VerAcist para trabalhar com as mesmas solicitações e visitas em todos os aparelhos.</p>
+    <form id="loginForm" class="login-form">
+      <label>E-mail<input id="loginEmail" type="email" autocomplete="username" required placeholder="usuario@veraci.com.br"></label>
+      <label>Senha<input id="loginPassword" type="password" autocomplete="current-password" required placeholder="••••••••"></label>
+      <button id="loginBtn" class="auth-submit" type="submit">Entrar no VerAcist</button>
+      <div id="authMessage" class="auth-message" role="alert"></div>
+    </form>
+    <div class="auth-foot">Cloud 1.1 · Banco e autenticação centralizados</div>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
   <header class="topbar">
     <button class="brand-btn" type="button" data-go="home" aria-label="Ir para o início">
       <img src="assets/veraci-logo-white.png" alt="Veraci" class="brand-logo">
@@ -24,8 +41,12 @@
     </button>
     <div class="topbar-right">
       <span id="networkState" class="network-chip">Online</span>
+      <span id="cloudState" class="cloud-chip">Conectando</span>
+      <button id="syncBtn" class="top-link compact" type="button" title="Atualizar dados">↻</button>
       <button class="top-link" type="button" data-go="requests">Solicitações</button>
       <button class="top-link" type="button" data-go="visits">Visitas</button>
+      <div class="user-block"><strong id="userName">Usuário</strong><small id="userRole"></small></div>
+      <button id="logoutBtn" class="top-link compact" type="button">Sair</button>
     </div>
   </header>
 
@@ -55,7 +76,7 @@
     <section id="page-requests" class="page content-page">
       <div class="page-head">
         <div><p class="eyebrow">GESTÃO</p><h1>Solicitações de Assistências</h1><p id="requestCount" class="page-sub"></p></div>
-        <button class="btn dark" type="button" data-new-request>+ Criar nova solicitação</button>
+        <button class="btn dark" type="button" data-new-request data-office-only>+ Criar nova solicitação</button>
       </div>
       <div class="panel">
         <div class="toolbar"><input id="requestSearch" type="search" placeholder="Buscar número, cliente ou contrato..."><span class="toolbar-note">Status operacionais são definidos automaticamente pelas visitas.</span></div>
@@ -66,7 +87,7 @@
           </table>
         </div>
       </div>
-      <div class="below-grid"><button class="btn dark" type="button" data-new-request>+ Criar nova solicitação</button></div>
+      <div class="below-grid"><button class="btn dark" type="button" data-new-request data-office-only>+ Criar nova solicitação</button></div>
     </section>
 
     <section id="page-visits" class="page content-page">
@@ -183,6 +204,8 @@
   <div id="modalRoot"></div>
   <div id="toast" class="toast hidden"></div>
 </div>
-<script src="app.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="config.js"></script>
+<script defer src="app.js"></script>
 </body>
 </html>

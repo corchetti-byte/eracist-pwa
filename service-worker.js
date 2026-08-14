@@ -1,5 +1,10 @@
-const CACHE='veracist-v2-20260813';
-const CORE=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./offline.html','./assets/veraci-logo-black.png','./assets/veraci-logo-white.png','./assets/veraci-pattern.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
+const CACHE='veracist-cloud-1-1b-20260814';
+const CORE=['./','./index.html','./styles.css','./config.js','./app.js','./manifest.webmanifest','./offline.html','./assets/veraci-logo-black.png','./assets/veraci-logo-white.png','./assets/veraci-pattern.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{ if(e.request.method!=='GET')return; e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(resp=>{const copy=resp.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return resp;}).catch(()=>e.request.mode==='navigate'?caches.match('./offline.html'):undefined))); });
+self.addEventListener('fetch',e=>{
+  if(e.request.method!=='GET')return;
+  const url=new URL(e.request.url);
+  if(url.origin!==self.location.origin)return; // Supabase/CDN continuam sempre pela rede.
+  e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(resp=>{const copy=resp.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return resp;}).catch(()=>e.request.mode==='navigate'?caches.match('./offline.html'):undefined)));
+});
