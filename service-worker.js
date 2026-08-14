@@ -1,5 +1,5 @@
-const CACHE='veracist-cloud-1-2-20260814';
-const CORE=['./','./index.html','./styles.css','./config.js','./app.js','./manifest.webmanifest','./offline.html','./assets/veraci-logo-black.png','./assets/veraci-logo-white.png','./assets/veraci-pattern.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
+const CACHE='veracist-cloud-1-2-1-20260814';
+const CORE=['./','./index.html','./styles.css','./config.js?v=1.2.1','./app.js?v=1.2.1','./manifest.webmanifest','./offline.html','./assets/veraci-logo-black.png','./assets/veraci-logo-white.png','./assets/veraci-pattern.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{

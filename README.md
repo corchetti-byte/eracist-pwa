@@ -1,4 +1,7 @@
-# VerAcist Cloud 1.2
+# VerAcist Cloud 1.2.1
+
+Correção de regressão do frontend do Cloud 1.2: funções auxiliares de interface foram restauradas, incluindo o estado de botão usado pelo login. O cache do service worker foi versionado para forçar a atualização do JavaScript nos PWAs já instalados.
+
 
 Evolução do Cloud 1.1B com Supabase Storage privado.
 

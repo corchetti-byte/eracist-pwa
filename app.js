@@ -21,6 +21,43 @@ const MEDIA_BUCKET='veracist-media';
 const LARGE_FILE_THRESHOLD=6*1024*1024;
 let cloudMediaRows=[];
 
+// ---------- Helpers globais de interface ----------
+// Mantidos fora da camada de mídia para que autenticação, modais, status e ações
+// continuem funcionais independentemente do backend de arquivos.
+function showToast(msg){
+  const t=$('toast');
+  if(!t) return;
+  t.textContent=msg;
+  t.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.add('hidden'),3000);
+}
+function closeModal(){
+  const root=$('modalRoot');
+  if(root) root.innerHTML='';
+}
+window.closeModal=closeModal;
+function isOffice(){ return ['admin','office'].includes(currentProfile?.role); }
+function isAdmin(){ return currentProfile?.role==='admin'; }
+function setCloudState(text,kind=''){
+  const el=$('cloudState');
+  if(!el) return;
+  el.textContent=text;
+  el.className=`cloud-chip ${kind}`.trim();
+}
+function setBusy(btn,busy,label){
+  if(!btn) return;
+  if(busy){
+    btn.dataset.oldText=btn.textContent;
+    btn.disabled=true;
+    btn.textContent=label||'Aguarde...';
+  }else{
+    btn.disabled=false;
+    btn.textContent=btn.dataset.oldText||btn.textContent;
+  }
+}
+
+
 function fileKind(file){
   const mime=(file?.type||'').toLowerCase();
   if(mime.startsWith('image/')) return 'image';
@@ -245,13 +282,20 @@ async function enterApp(user){
   await loadCloudData();go('home',false);
 }
 async function bootstrap(){
-  try{initSupabase();}catch(e){console.error(e);$('authMessage').textContent=e.message;return;}
-  const {data:{session}}=await sb.auth.getSession();
-  if(session?.user)await enterApp(session.user);else showLogin();
-  sb.auth.onAuthStateChange((event,session)=>{
-    if(event==='SIGNED_OUT'||!session){showLogin();}
-    else if(['SIGNED_IN','USER_UPDATED','TOKEN_REFRESHED'].includes(event)&&session.user&&!currentUser){setTimeout(()=>enterApp(session.user),0);}
-  });
+  try{
+    initSupabase();
+    const {data:{session},error}=await sb.auth.getSession();
+    if(error) throw error;
+    if(session?.user) await enterApp(session.user); else showLogin();
+    sb.auth.onAuthStateChange((event,session)=>{
+      if(event==='SIGNED_OUT'||!session){showLogin();}
+      else if(['SIGNED_IN','USER_UPDATED','TOKEN_REFRESHED'].includes(event)&&session.user&&!currentUser){setTimeout(()=>enterApp(session.user),0);}
+    });
+  }catch(e){
+    console.error('Falha ao iniciar o VerAcist:',e);
+    const msg=$('authMessage');
+    if(msg) msg.textContent=`Falha ao iniciar o VerAcist: ${e.message||'erro desconhecido'}`;
+  }
 }
 $('loginForm').addEventListener('submit',async e=>{
   e.preventDefault();const btn=$('loginBtn');setBusy(btn,true,'Entrando...');$('authMessage').textContent='';
