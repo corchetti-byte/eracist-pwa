@@ -1,26 +1,22 @@
-# VerAcist Cloud 1.1B
+# VerAcist Cloud 1.2
 
-Primeira versão do PWA VerAcist conectada ao Supabase para trabalho multiusuário.
+Evolução do Cloud 1.1B com Supabase Storage privado.
 
-## Fluxos centralizados
-- Login Supabase Auth
-- Solicitações e ocorrências no PostgreSQL
-- Agendamento cria Visita Técnica automaticamente no banco
-- Painel de visitas compartilhado
-- Execução, horários, KM e resultados das ocorrências compartilhados
-- Status Com pendências / Finalizada propagados automaticamente
-- Reagendamento com histórico
-- Perfis admin / office / technician
+## O que muda
+- Fotos da Solicitação → Supabase Storage
+- Vídeos da Solicitação → Supabase Storage
+- Fotos/vídeos da execução → Supabase Storage
+- Assinatura do vistoriador → Supabase Storage
+- Assinatura do cliente → Supabase Storage
+- Mídia acessível em todos os aparelhos autenticados
+- URLs assinadas temporárias para bucket privado
+- Upload retomável TUS para arquivos maiores que 6 MB
+- PDFs/visualizações utilizam a mídia da nuvem
 
-## Cloud 1.2
-Fotos, vídeos e assinaturas ainda são locais neste pacote. O Cloud 1.2 migrará esses arquivos para Supabase Storage.
+## Ordem de implantação
+1. Execute `05_cloud_1_2_storage.sql`.
+2. Execute `06_validacao_cloud_1_2.sql`.
+3. Publique os arquivos do PWA.
+4. Faça os testes descritos em `GUIA_CLOUD_1_2.md`.
 
-## Instalação
-1. Execute `01_veracist_schema.sql` se ainda não executou o schema inicial.
-2. Execute `03_cloud_1_1b_patch.sql` no SQL Editor.
-3. Confira usuários e perfis.
-4. Publique esta pasta inteira no Netlify/GitHub substituindo a versão anterior.
-5. Abra em dois aparelhos e siga `GUIA_CLOUD_1_1B.md`.
-
-## Configuração
-`config.js` já contém a Project URL e a Publishable Key informadas para este projeto. Não adicionar Secret Key, service_role ou senha do banco.
+Não publique nenhuma Secret Key no frontend.
