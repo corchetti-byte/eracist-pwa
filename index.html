@@ -1,94 +1,188 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1d1c1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="VerAcist">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="description" content="VerAcist — Gestão de Assistências Técnicas da Veraci Design.">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<title>VerAcist — Gestão de Assistências Técnicas</title>
-<style>
-:root{--ink:#171717;--muted:#767676;--paper:#f5f3ef;--card:#fff;--line:#dedbd5;--soft:#ebe8e2;--dark:#22211f;--ok:#356b4c;--warn:#9a681b;--bad:#a53b32;--blue:#405f78;--radius:18px;--shadow:0 12px 35px rgba(0,0,0,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.hidden{display:none!important}button,input,select,textarea{font:inherit}.app{min-height:100vh}.top{height:74px;background:#1d1c1a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30}.brand{display:flex;gap:13px;align-items:center;cursor:pointer}.mark{width:38px;height:38px;border:1px solid rgba(255,255,255,.65);display:grid;place-items:center;font-family:Georgia,serif;font-size:17px;letter-spacing:-1px}.brand-name{font-family:Georgia,serif;font-size:20px;letter-spacing:.02em}.brand-sub{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#aaa69f;margin-top:2px}.top-actions{display:flex;gap:8px}.top button{border:1px solid #4a4844;background:transparent;color:#eee;border-radius:11px;padding:9px 12px}.page{display:none;max-width:1240px;margin:auto;padding:28px 22px 90px}.page.active{display:block}.hero{min-height:calc(100vh - 74px);display:flex;align-items:center;justify-content:center;padding:32px}.welcome{max-width:820px;width:100%;text-align:center}.welcome .large-mark{width:92px;height:92px;margin:0 auto 24px;border:1px solid #46433d;display:grid;place-items:center;font-family:Georgia,serif;font-size:34px}.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#88847d;font-weight:700}.welcome h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(35px,6vw,62px);margin:10px 0 8px}.welcome p{color:#77736c;margin:0 auto 35px;max-width:600px}.portal-buttons{display:grid;grid-template-columns:1fr 1fr;gap:16px}.portal-card{background:#fff;border:1px solid var(--line);border-radius:21px;box-shadow:var(--shadow);padding:28px;text-align:left;transition:.18s;cursor:pointer}.portal-card:hover{transform:translateY(-2px);border-color:#aaa59c}.portal-card span{display:inline-grid;place-items:center;width:43px;height:43px;border-radius:50%;background:#242321;color:#fff;margin-bottom:23px}.portal-card h2{font:400 25px Georgia,serif;margin:0 0 8px}.portal-card p{margin:0;color:#77736c;font-size:14px;line-height:1.5}.page-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}.page-head h1{font:400 34px Georgia,serif;margin:3px 0 0}.page-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.btn{border:0;border-radius:11px;padding:11px 15px;font-weight:700;cursor:pointer}.btn.primary{background:#22211f;color:#fff}.btn.secondary{background:#e8e5df;color:#242321}.btn.outline{background:#fff;border:1px solid #ccc7bf}.btn.danger{background:#f7e9e7;color:#8d342d}.btn.small{padding:8px 10px;font-size:12px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.toolbar{display:flex;gap:10px;padding:15px;border-bottom:1px solid var(--line);justify-content:space-between}.toolbar input{width:min(390px,100%)}input,select,textarea{border:1px solid #cec9c1;border-radius:10px;padding:11px 12px;background:#fff;color:#222;outline:none;width:100%}input:focus,select:focus,textarea:focus{border-color:#57534c;box-shadow:0 0 0 3px rgba(87,83,76,.08)}textarea{resize:vertical;min-height:95px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:1030px}th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#858078;background:#faf9f7;padding:12px 14px;border-bottom:1px solid var(--line)}td{padding:14px;border-bottom:1px solid #eeeae4;font-size:13px;vertical-align:middle}tr:last-child td{border-bottom:0}.num{font-weight:800}.client{font-weight:700}.sub{display:block;font-size:11px;color:#8a867f;margin-top:3px}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;font-size:11px;font-weight:800}.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.pill.registered{background:#eeeae3;color:#59534b}.pill.scheduled{background:#e8f0eb;color:var(--ok)}.pill.cancelled{background:#f7e8e6;color:var(--bad)}.pill.progress{background:#e8eef3;color:var(--blue)}.pill.pending{background:#fff0d8;color:#9a681b}.pill.final{background:#e4f2e9;color:#2f6a48}.auto-status{font-size:11px;color:#827d75;font-weight:700}.outcome-box{border:1px solid #d8d3ca;background:#faf8f4;border-radius:13px;padding:14px;margin-top:14px}.outcome-box strong{display:block;font-size:14px;margin-bottom:4px}.outcome-box .sub{margin:0}.row-actions{display:flex;gap:6px;flex-wrap:wrap}.create-bar{margin-top:17px;display:flex;justify-content:flex-end}.inline-editor{margin:0 14px 14px;padding:15px;background:#f8f6f2;border:1px solid #e2ded7;border-radius:13px}.editor-grid{display:grid;grid-template-columns:1fr 1fr 1.3fr auto;gap:10px;align-items:end}.editor-grid.cancel{grid-template-columns:1fr auto}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:11px;font-weight:800;color:#5c5750}.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:21px;margin-bottom:15px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.section-title h2{font:400 21px Georgia,serif;margin:0}.tag{padding:6px 10px;background:#f0ede7;border-radius:999px;color:#635e56;font-size:11px;font-weight:800}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.span2{grid-column:span 2}.span3{grid-column:span 3}.occurrence{border:1px solid #d9d4cc;border-radius:15px;overflow:hidden;margin-bottom:13px}.occ-head{padding:12px 14px;background:#f5f2ed;display:flex;justify-content:space-between;align-items:center}.occ-head strong{font-family:Georgia,serif;font-size:17px}.occ-body{padding:15px}.media-box{border:1px dashed #bbb4aa;border-radius:12px;padding:14px;background:#fbfaf8}.media-list{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}.media-thumb{height:80px;border-radius:9px;background:#e7e2da;display:grid;place-items:center;color:#766f66;font-size:11px;text-align:center;padding:5px;overflow:hidden}.media-thumb img,.media-thumb video{width:100%;height:100%;object-fit:cover}.savebar{position:sticky;bottom:12px;background:rgba(255,255,255,.93);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:15px;padding:11px;box-shadow:var(--shadow);display:flex;justify-content:flex-end;gap:9px}.detail-banner{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:15px}.detail-banner>div{background:#f5f2ed;border-radius:12px;padding:11px}.detail-banner small{display:block;color:#827d75;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.detail-banner strong{display:block;margin-top:4px;font-size:13px}.resolution{margin-top:13px;padding:13px;background:#f7f5f1;border-radius:12px}.resolution-grid{display:grid;grid-template-columns:220px 1fr;gap:12px}.empty{padding:45px;text-align:center;color:#777}.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}.modal{background:#fff;width:min(780px,100%);max-height:88vh;overflow:auto;border-radius:20px;box-shadow:0 25px 70px rgba(0,0,0,.25);padding:22px}.modal h2{font:400 26px Georgia,serif;margin:0 0 15px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.preview-block{padding:12px 0;border-bottom:1px solid #eee}.preview-block:last-child{border:0}@media(max-width:760px){.top{padding:0 14px}.brand-sub{display:none}.top-actions{display:none}.hero{padding:22px}.portal-buttons{grid-template-columns:1fr}.page{padding:20px 12px 80px}.page-head{align-items:flex-start;flex-direction:column}.grid2,.grid3,.detail-banner{grid-template-columns:1fr}.span2,.span3{grid-column:auto}.editor-grid,.editor-grid.cancel{grid-template-columns:1fr}.media-list{grid-template-columns:repeat(3,1fr)}.resolution-grid{grid-template-columns:1fr}.savebar{bottom:6px}.page-head h1{font-size:28px}}
-@media print{.top,.page-head .btn,.toolbar,.row-actions,.create-bar,.savebar,.btn,.status-control{display:none!important}.page{display:none!important;padding:0}.page.printing{display:block!important}.panel,.form-card{box-shadow:none;border-color:#aaa}body{background:#fff}table{min-width:0;font-size:10px}}
-
-/* PWA / iOS */
-@supports (padding: max(0px)){.top{padding-left:max(28px,env(safe-area-inset-left));padding-right:max(28px,env(safe-area-inset-right));padding-top:env(safe-area-inset-top);height:calc(74px + env(safe-area-inset-top))}.page{padding-bottom:max(90px,calc(70px + env(safe-area-inset-bottom)))}@media(max-width:760px){.top{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}}}
-.install-hint{margin:26px auto 0;max-width:620px;font-size:12px;color:#817b73}.offline-chip{position:fixed;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:45;background:#fff3d8;color:#855e1d;border:1px solid #ead39a;border-radius:999px;padding:8px 11px;font-size:11px;font-weight:800;box-shadow:var(--shadow)}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0c0c0c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="VerAcist">
+  <meta name="description" content="VerAcist — Gestão de Assistências Técnicas da Veraci Design.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>VerAcist — Gestão de Assistências Técnicas</title>
 </head>
 <body>
-<div class="app">
-<header class="top"><div class="brand" onclick="go('home')"><div class="mark">VD</div><div><div class="brand-name">Veraci</div><div class="brand-sub">Gestão de Assistências Técnicas</div></div></div><div class="top-actions"><button onclick="go('requests')">Solicitações</button><button onclick="go('visits')">Visitas Técnicas</button></div></header>
+<div id="app" class="app">
+  <header class="topbar">
+    <button class="brand-btn" type="button" data-go="home" aria-label="Ir para o início">
+      <img src="assets/veraci-logo-white.png" alt="Veraci" class="brand-logo">
+      <span class="brand-divider"></span>
+      <span class="brand-product">VerAcist</span>
+    </button>
+    <div class="topbar-right">
+      <span id="networkState" class="network-chip">Online</span>
+      <button class="top-link" type="button" data-go="requests">Solicitações</button>
+      <button class="top-link" type="button" data-go="visits">Visitas</button>
+    </div>
+  </header>
 
-<section id="home" class="page active hero"><div class="welcome"><div class="large-mark">VD</div><div class="kicker">Portal VerAcist</div><h1>Gestão de Assistências Técnicas</h1><p>Centralize solicitações, agendamentos, visitas em campo, ocorrências e histórico técnico em um único fluxo.</p><div class="portal-buttons"><article class="portal-card" onclick="go('requests')"><span>01</span><h2>Solicitações de Assistências</h2><p>Cadastre, agende, cancele, edite e acompanhe solicitações e suas ocorrências.</p></article><article class="portal-card" onclick="go('visits')"><span>02</span><h2>Visitas Técnicas</h2><p>Acompanhe as visitas originadas pelas solicitações agendadas e execute o atendimento em campo.</p></article></div></div></section>
+  <main>
+    <section id="page-home" class="page home-page active">
+      <div class="home-overlay"></div>
+      <div class="home-content">
+        <img src="assets/veraci-logo-white.png" alt="Veraci" class="hero-logo">
+        <p class="eyebrow light">PORTAL VERACIST</p>
+        <h1>Gestão de Assistências Técnicas</h1>
+        <p class="hero-copy">Solicitações, visitas, ocorrências e encerramentos em um único fluxo operacional.</p>
+        <div class="home-actions">
+          <button class="service-card" type="button" data-go="requests">
+            <span class="service-index">01</span>
+            <span><strong>Solicitações de Assistências</strong><small>Cadastrar, agendar, cancelar e acompanhar.</small></span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="service-card" type="button" data-go="visits">
+            <span class="service-index">02</span>
+            <span><strong>Visitas Técnicas</strong><small>Executar, registrar pendências e finalizar.</small></span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
-<section id="requests" class="page"><div class="page-head"><div><div class="kicker">Painel de gestão</div><h1>Solicitações de Assistências</h1><p>As visitas são criadas automaticamente quando uma solicitação é confirmada como agendada.</p></div><button class="btn primary" onclick="newRequest()">+ Criar nova solicitação</button></div><div class="panel"><div class="toolbar"><input id="requestSearch" placeholder="Buscar por solicitação, cliente ou contrato..." oninput="renderRequests()"><span class="tag" id="requestCount"></span></div><div class="table-wrap"><table><thead><tr><th>Solicitação</th><th>Cliente</th><th>Data cadastro</th><th>Ocorrências</th><th>Status</th><th>Alterar status</th><th>Ações</th></tr></thead><tbody id="requestsBody"></tbody></table></div><div id="requestEditors"></div></div><div class="create-bar"><button class="btn primary" onclick="newRequest()">+ Criar nova solicitação</button></div></section>
+    <section id="page-requests" class="page content-page">
+      <div class="page-head">
+        <div><p class="eyebrow">GESTÃO</p><h1>Solicitações de Assistências</h1><p id="requestCount" class="page-sub"></p></div>
+        <button class="btn dark" type="button" data-new-request>+ Criar nova solicitação</button>
+      </div>
+      <div class="panel">
+        <div class="toolbar"><input id="requestSearch" type="search" placeholder="Buscar número, cliente ou contrato..."><span class="toolbar-note">Status operacionais são definidos automaticamente pelas visitas.</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Solicitação</th><th>Cliente</th><th>Cadastro</th><th>Ocorr.</th><th>Status</th><th>Alterar status</th><th>Ações</th></tr></thead>
+            <tbody id="requestsBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="below-grid"><button class="btn dark" type="button" data-new-request>+ Criar nova solicitação</button></div>
+    </section>
 
-<section id="visits" class="page"><div class="page-head"><div><div class="kicker">Painel de gestão</div><h1>Visitas Técnicas</h1><p>Demandas geradas exclusivamente a partir de solicitações confirmadas/agendadas.</p></div><button class="btn secondary" onclick="go('requests')">Ver solicitações</button></div><div class="panel"><div class="toolbar"><input id="visitSearch" placeholder="Buscar por visita, solicitação, cliente ou técnico..." oninput="renderVisits()"><span class="tag" id="visitCount"></span></div><div class="table-wrap"><table><thead><tr><th>Visita</th><th>Solicitação origem</th><th>Cliente</th><th>Agendamento</th><th>Técnico</th><th>Status</th><th>Ações</th></tr></thead><tbody id="visitsBody"></tbody></table></div></div></section>
+    <section id="page-visits" class="page content-page">
+      <div class="page-head">
+        <div><p class="eyebrow">GESTÃO</p><h1>Painel de Visitas Técnicas</h1><p id="visitCount" class="page-sub"></p></div>
+      </div>
+      <div class="panel">
+        <div class="toolbar"><input id="visitSearch" type="search" placeholder="Buscar visita, solicitação, cliente ou técnico..."><span class="toolbar-note">Visitas são criadas automaticamente quando uma solicitação é agendada.</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Visita</th><th>Cliente</th><th>Solicitação</th><th>Agendamento</th><th>Técnico</th><th>Status</th><th>Ações</th></tr></thead>
+            <tbody id="visitsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-<section id="requestForm" class="page"><div class="page-head"><div><div class="kicker">Nova ordem de serviço</div><h1>Solicitação de Assistência Técnica</h1><p id="requestFormNumber"></p></div><button class="btn secondary" onclick="go('requests')">← Voltar</button></div><form id="reqForm" onsubmit="return false"><div class="form-card"><div class="section-title"><h2>Cabeçalho</h2><span class="tag">Veraci Design</span></div><div class="grid3"><div class="field"><label>Nº da Solicitação</label><input id="rfNumber" readonly></div><div class="field"><label>Data solicitação</label><input id="rfDate" type="date"></div><div class="field"><label>Solicitado por</label><input id="rfRequestedBy"></div><div class="field"><label>Tipo de Atendimento</label><input id="rfType" placeholder="Ex.: Garantia, assistência, vistoria"></div><div class="field"><label>Preenchido por</label><input id="rfFilledBy"></div><div class="field"><label>Ocorrência / classificação</label><select id="rfClass"><option>Assistência Técnica - Pós Montagem</option><option>Assistência Técnica - Em Montagem</option><option>Vistoria Pós Montagem</option></select></div></div></div><div class="form-card"><div class="section-title"><h2>Dados do Cliente</h2></div><div class="grid3"><div class="field"><label>Nome</label><input id="rfClient"></div><div class="field"><label>Contrato</label><input id="rfContract"></div><div class="field"><label>Telefone</label><input id="rfPhone"></div><div class="field span3"><label>Endereço completo da instalação</label><input id="rfAddress"></div><div class="field"><label>Cidade</label><input id="rfCity"></div><div class="field"><label>UF</label><input id="rfUF"></div></div></div><div class="form-card"><div class="section-title"><h2>Ocorrências</h2><button class="btn outline small" type="button" onclick="addOccurrence()">+ Adicionar ocorrência</button></div><div id="occurrences"></div></div><div class="form-card"><div class="section-title"><h2>Agendamento</h2><span class="tag">Opcional no cadastro inicial</span></div><div class="grid3"><div class="field"><label>Data da visita cliente</label><input id="rfScheduleDate" type="date"></div><div class="field"><label>Horário chegada cliente</label><input id="rfScheduleTime" type="time"></div><div class="field"><label>Técnico responsável</label><input id="rfTechnician" placeholder="Digite o nome do técnico"></div></div></div><div class="savebar"><button class="btn outline" type="button" onclick="saveRequest(true)">Salvar rascunho</button><button class="btn primary" type="button" onclick="saveRequest(false)">Salvar solicitação</button></div></form></section>
+    <section id="page-requestForm" class="page content-page form-page">
+      <div class="page-head">
+        <div><p class="eyebrow">ORDEM DE SERVIÇO</p><h1>Solicitação de Assistência Técnica</h1><p class="page-sub">Veraci Design · <span id="requestFormNumber"></span></p></div>
+        <button class="btn light" type="button" data-go="requests">← Voltar</button>
+      </div>
+      <form id="requestForm" novalidate>
+        <div class="form-card">
+          <div class="section-title"><h2>01. Cabeçalho</h2><span class="tag">Rascunho permitido</span></div>
+          <div class="grid3">
+            <label class="field">Nº da solicitação<input id="rfNumber" readonly></label>
+            <label class="field">Data solicitação<input id="rfDate" type="date"></label>
+            <label class="field">Solicitado por<input id="rfRequestedBy"></label>
+            <label class="field">Tipo de atendimento<input id="rfType" placeholder="Ex.: Assistência / Vistoria"></label>
+            <label class="field">Preenchido por<input id="rfFilledBy"></label>
+            <label class="field">Ocorrência<select id="rfClass"><option value="">Selecione...</option><option>Assistência Técnica - Pós Montagem</option><option>Assistência Técnica - Em Montagem</option><option>Vistoria Pós Montagem</option></select></label>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="section-title"><h2>02. Dados do Cliente</h2></div>
+          <div class="grid3">
+            <label class="field">Nome<input id="rfClient"></label>
+            <label class="field">Contrato<input id="rfContract"></label>
+            <label class="field">Telefone<input id="rfPhone" type="tel"></label>
+            <label class="field span3">Endereço completo da instalação<input id="rfAddress"></label>
+            <label class="field span2">Cidade<input id="rfCity"></label>
+            <label class="field">UF<input id="rfUF" maxlength="2"></label>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="section-title"><h2>03. Ocorrências</h2><button class="btn light small" id="addOccurrenceBtn" type="button">+ Adicionar ocorrência</button></div>
+          <div id="occurrences"></div>
+        </div>
+        <div class="form-card">
+          <div class="section-title"><h2>04. Agendamento</h2><span class="tag">Pode ser preenchido posteriormente no painel</span></div>
+          <div class="grid3">
+            <label class="field">Data da visita<input id="rfScheduleDate" type="date"></label>
+            <label class="field">Horário chegada cliente<input id="rfScheduleTime" type="time"></label>
+            <label class="field">Técnico responsável<input id="rfTechnician" placeholder="Digite o nome do técnico"></label>
+          </div>
+        </div>
+        <div class="savebar">
+          <button class="btn light" id="saveDraftBtn" type="button">Salvar rascunho</button>
+          <button class="btn dark" id="saveRequestBtn" type="button">Salvar solicitação</button>
+        </div>
+      </form>
+    </section>
 
-<section id="visitForm" class="page"><div class="page-head"><div><div class="kicker">Ordem de visita técnica</div><h1 id="visitTitle">Visita Técnica</h1><p id="visitOrigin"></p></div><button class="btn secondary" onclick="go('visits')">← Voltar</button></div><div class="form-card"><div class="section-title"><h2>Dados herdados da Solicitação</h2><span class="tag">Preenchimento automático</span></div><div class="detail-banner"><div><small>Cliente</small><strong id="vfClient"></strong></div><div><small>Contrato</small><strong id="vfContract"></strong></div><div><small>Agendamento</small><strong id="vfSchedule"></strong></div><div><small>Técnico</small><strong id="vfTechnician"></strong></div></div><div class="grid2"><div class="field span2"><label>Endereço da instalação</label><input id="vfAddress" readonly></div><div class="field"><label>Hora de entrada</label><input id="vfEntry" type="time"></div><div class="field"><label>Hora de saída</label><input id="vfExit" type="time"></div><div class="field"><label>Quilometragem inicial</label><input id="vfKmStart" type="number" step="0.1"></div><div class="field"><label>Quilometragem final</label><input id="vfKmEnd" type="number" step="0.1"></div></div></div><div class="form-card"><div class="section-title"><h2>Ocorrências da visita</h2><span class="tag">Herdadas da solicitação</span></div><div id="visitOccurrences"></div></div><div class="form-card"><div class="section-title"><h2>Encerramento</h2><span class="tag">Status calculado automaticamente</span></div><div class="outcome-box"><strong id="vfOutcomeTitle">Aguardando avaliação das ocorrências</strong><span class="sub" id="vfOutcomeText">Se todas as ocorrências forem resolvidas, a visita e a solicitação serão finalizadas. Se houver ao menos uma pendência, ambas receberão o status “Com pendências”.</span></div><div class="grid2" style="margin-top:14px"><div class="field span2"><label>Observações gerais da visita</label><textarea id="vfNotes"></textarea></div><div class="field"><label>Assinatura do vistoriador</label><div class="media-box">Área de assinatura — versão funcional manterá o canvas já existente.</div></div><div class="field"><label>Assinatura do cliente</label><div class="media-box">Área de assinatura — versão funcional manterá o canvas já existente.</div></div></div></div><div class="savebar"><button class="btn outline" onclick="printVisit()">Imprimir / PDF</button><button class="btn primary" onclick="saveVisit()">Salvar visita técnica</button></div></section>
+    <section id="page-visitForm" class="page content-page form-page">
+      <div class="page-head">
+        <div><p class="eyebrow">ORDEM DE VISITA TÉCNICA</p><h1 id="visitTitle">Visita Técnica</h1><p id="visitOrigin" class="page-sub"></p></div>
+        <button class="btn light" type="button" data-go="visits">← Voltar</button>
+      </div>
+      <div class="form-card">
+        <div class="section-title"><h2>01. Dados herdados da Solicitação</h2><span class="tag">Preenchimento automático</span></div>
+        <div class="detail-banner">
+          <div><small>Cliente</small><strong id="vfClient"></strong></div>
+          <div><small>Contrato</small><strong id="vfContract"></strong></div>
+          <div><small>Agendamento</small><strong id="vfSchedule"></strong></div>
+          <div><small>Técnico</small><strong id="vfTechnician"></strong></div>
+        </div>
+        <div class="grid2">
+          <label class="field span2">Endereço da instalação<input id="vfAddress" readonly></label>
+          <label class="field">Hora de entrada<input id="vfEntry" type="time"></label>
+          <label class="field">Hora de saída<input id="vfExit" type="time"></label>
+          <label class="field">Quilometragem inicial<input id="vfKmStart" type="number" step="0.1"></label>
+          <label class="field">Quilometragem final<input id="vfKmEnd" type="number" step="0.1"></label>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="section-title"><h2>02. Ocorrências da visita</h2><span class="tag">Herdadas da solicitação</span></div>
+        <div id="visitOccurrences"></div>
+      </div>
+      <div class="form-card">
+        <div class="section-title"><h2>03. Encerramento e Assinaturas</h2><span class="tag">Status calculado automaticamente</span></div>
+        <div class="outcome-box"><strong id="vfOutcomeTitle">Aguardando avaliação das ocorrências</strong><span id="vfOutcomeText">Se todas forem resolvidas, visita e solicitação serão finalizadas. Havendo pendência, ambas receberão “Com pendências”.</span></div>
+        <label class="field full-gap">Observações gerais da visita<textarea id="vfNotes"></textarea></label>
+        <div class="signature-grid">
+          <div class="signature-block">
+            <div class="signature-head"><strong>Assinatura do vistoriador</strong><button type="button" class="text-btn" data-clear-sign="inspector">Limpar</button></div>
+            <p>Assine com o dedo, Apple Pencil ou mouse.</p>
+            <canvas id="inspectorSignature" class="signature-canvas" width="1200" height="320"></canvas>
+          </div>
+          <div class="signature-block">
+            <div class="signature-head"><strong>Assinatura do cliente</strong><button type="button" class="text-btn" data-clear-sign="client">Limpar</button></div>
+            <p>Assine com o dedo, Apple Pencil ou mouse.</p>
+            <canvas id="clientSignature" class="signature-canvas" width="1200" height="320"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="savebar">
+        <button class="btn light" id="printActiveVisitBtn" type="button">Visualizar / PDF</button>
+        <button class="btn dark" id="saveVisitBtn" type="button">Salvar visita técnica</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast hidden"></div>
 </div>
-<div id="modalRoot"></div>
-<script>
-const KEYR='veracist_requests_proto_v4', KEYV='veracist_visits_proto_v4';
-const $=id=>document.getElementById(id); let editingRequest=null, activeVisit=null;
-const seedR=[{id:'r1',number:'SAT-20260810-001',date:'2026-08-10',requestedBy:'Comercial',type:'Assistência',filledBy:'Ana',classif:'Assistência Técnica - Pós Montagem',client:'Residência Almeida',contract:'VRC-260184',phone:'(11) 99999-1234',address:'Al. das Figueiras, 120',city:'Campinas',uf:'SP',status:'Cadastrada',occurrences:[{environment:'Cozinha',description:'Regular porta superior e conferir alinhamento.',materials:'',factoryOrder:'',finishDate:'',notes:'',media:[]}]},{id:'r2',number:'SAT-20260811-002',date:'2026-08-11',requestedBy:'Pós-venda',type:'Assistência',filledBy:'Marina',classif:'Assistência Técnica - Pós Montagem',client:'Apto. Martins',contract:'VRC-260201',phone:'(19) 98888-4321',address:'R. das Acácias, 88',city:'Americana',uf:'SP',status:'Agendada',scheduleDate:'2026-08-14',scheduleTime:'09:30',technician:'Carlos Eduardo',occurrences:[{environment:'Closet suíte',description:'Substituir frente de gaveta com avaria.',materials:'1 frente de gaveta — padrão Nogueira',factoryOrder:'PF-1842',finishDate:'',notes:'Conferir tonalidade antes da montagem.',media:[{name:'foto_ocorrencia.jpg',type:'image'}]}]},{id:'r3',number:'SAT-20260812-003',date:'2026-08-12',requestedBy:'Cliente',type:'Vistoria',filledBy:'Paula',classif:'Vistoria Pós Montagem',client:'Casa Oliveira',contract:'VRC-260219',phone:'(11) 97777-2222',address:'Cond. Vila Verde, 35',city:'Itu',uf:'SP',status:'Cancelada',cancelReason:'Cliente solicitou reagendamento futuro.',occurrences:[{environment:'Gourmet',description:'Vistoria geral pós montagem.',materials:'',factoryOrder:'',finishDate:'',notes:'',media:[]}]},{id:'r4',number:'SAT-20260809-004',date:'2026-08-09',requestedBy:'Pós-venda',type:'Assistência',filledBy:'Marina',classif:'Assistência Técnica - Pós Montagem',client:'Residência Costa',contract:'VRC-260175',phone:'(19) 96666-7788',address:'Rua das Palmeiras, 410',city:'Campinas',uf:'SP',status:'Com pendências',scheduleDate:'2026-08-15',scheduleTime:'14:00',technician:'Rafael Souza',occurrences:[{environment:'Cozinha',description:'Ajustar porta basculante e substituir amortecedor.',materials:'1 amortecedor',factoryOrder:'PF-1808',finishDate:'',notes:'',media:[],result:'Não resolvido',reason:'Peça de reposição ainda não disponível.'}]},{id:'r5',number:'SAT-20260807-005',date:'2026-08-07',requestedBy:'Pós-venda',type:'Assistência',filledBy:'Ana',classif:'Assistência Técnica - Pós Montagem',client:'Apto. Ribeiro',contract:'VRC-260160',phone:'(11) 95555-1144',address:'Av. Central, 900',city:'São Paulo',uf:'SP',status:'Finalizada',scheduleDate:'2026-08-12',scheduleTime:'10:00',technician:'Felipe Moraes',occurrences:[{environment:'Home',description:'Regular porta deslizante.',materials:'',factoryOrder:'',finishDate:'2026-08-12',notes:'',media:[],result:'Resolvido',reason:''}]}];
-function load(k,seed=[]){let v;try{v=JSON.parse(localStorage.getItem(k)||'null')}catch{} if(!v){v=seed;localStorage.setItem(k,JSON.stringify(v))}return v}function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
-let requests=load(KEYR,seedR), visits=load(KEYV,[]); if(!visits.length){visits=requests.filter(x=>['Agendada','Com pendências','Finalizada'].includes(x.status)).map(visitFromRequest);save(KEYV,visits)}
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active','printing'));$(id).classList.add('active');window.scrollTo(0,0);if(id==='requests')renderRequests();if(id==='visits')renderVisits()}
-function fmtDate(v){if(!v)return'—';let [y,m,d]=v.split('-');return `${d}/${m}/${y}`}function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function statusClass(s){return s==='Agendada'?'scheduled':s==='Cancelada'?'cancelled':s==='Com pendências'?'pending':s==='Finalizada'?'final':s==='Em atendimento'?'progress':'registered'}
-function renderRequests(){const q=($('requestSearch').value||'').toLowerCase();const rows=requests.filter(r=>[r.number,r.client,r.contract].join(' ').toLowerCase().includes(q));$('requestCount').textContent=`${rows.length} solicitação(ões)`;$('requestsBody').innerHTML=rows.map(r=>{const automatic=['Com pendências','Finalizada'].includes(r.status);return `<tr><td><span class="num">${r.number}</span><span class="sub">Contrato ${esc(r.contract)}</span></td><td><span class="client">${esc(r.client)}</span><span class="sub">${esc(r.city)}/${esc(r.uf)}</span></td><td>${fmtDate(r.date)}</td><td>${r.occurrences?.length||0}</td><td><span class="pill ${statusClass(r.status)}">${r.status}</span></td><td>${automatic?'<span class="auto-status">Definido pela visita</span>':`<select class="status-control" onchange="changeStatus('${r.id}',this.value);this.value=''"><option value="">Alterar...</option><option ${r.status==='Cadastrada'?'disabled':''}>Cadastrada</option><option ${r.status==='Agendada'?'disabled':''}>Agendada</option><option ${r.status==='Cancelada'?'disabled':''}>Cancelada</option></select>`}</td><td><div class="row-actions"><button class="btn outline small" onclick="viewRequest('${r.id}')">Visualizar</button><button class="btn secondary small" onclick="editRequest('${r.id}')">Editar</button><button class="btn outline small" onclick="printRequest('${r.id}')">PDF</button></div></td></tr>`}).join('')||`<tr><td colspan="7" class="empty">Nenhuma solicitação encontrada.</td></tr>`}
-function changeStatus(id,status){if(!status)return;const r=requests.find(x=>x.id===id);if(status==='Cadastrada'){r.status=status;r.scheduleDate='';r.scheduleTime='';r.technician='';removeVisitForRequest(r.id);persist();return}if(status==='Agendada')showScheduleEditor(r);if(status==='Cancelada')showCancelEditor(r)}
-function showScheduleEditor(r){$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="kicker">Confirmar agendamento</div><h2>${r.number}</h2><div class="grid3"><div class="field"><label>Data agendamento</label><input id="mDate" type="date" value="${r.scheduleDate||''}"></div><div class="field"><label>Horário</label><input id="mTime" type="time" value="${r.scheduleTime||''}"></div><div class="field"><label>Técnico responsável</label><input id="mTech" value="${esc(r.technician||'')}" placeholder="Digite o nome"></div></div><p class="sub">Ao confirmar, a Visita Técnica será criada/atualizada automaticamente e vinculada a esta solicitação.</p><div class="modal-actions"><button class="btn secondary" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="confirmSchedule('${r.id}')">Confirmar agendamento</button></div></div></div>`}
-function confirmSchedule(id){const r=requests.find(x=>x.id===id);r.status='Agendada';r.scheduleDate=$('mDate').value;r.scheduleTime=$('mTime').value;r.technician=$('mTech').value;upsertVisit(r);persist();closeModal();renderRequests()}
-function showCancelEditor(r){$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="kicker">Cancelar solicitação</div><h2>${r.number}</h2><div class="field"><label>Motivo do cancelamento</label><textarea id="mReason">${esc(r.cancelReason||'')}</textarea></div><div class="modal-actions"><button class="btn secondary" onclick="closeModal()">Voltar</button><button class="btn danger" onclick="confirmCancel('${r.id}')">Confirmar cancelamento</button></div></div></div>`}
-function confirmCancel(id){const r=requests.find(x=>x.id===id);r.status='Cancelada';r.cancelReason=$('mReason').value;removeVisitForRequest(r.id);persist();closeModal();renderRequests()}function closeModal(){$('modalRoot').innerHTML=''}
-function visitFromRequest(r){return{id:'v_'+r.id,number:'VT-'+r.number.replace('SAT-',''),requestId:r.id,requestNumber:r.number,client:r.client,contract:r.contract,address:[r.address,r.city,r.uf].filter(Boolean).join(' — '),scheduleDate:r.scheduleDate,scheduleTime:r.scheduleTime,technician:r.technician,status:['Com pendências','Finalizada'].includes(r.status)?r.status:'Agendada',occurrences:JSON.parse(JSON.stringify(r.occurrences||[])),entry:'',exit:'',kmStart:'',kmEnd:'',notes:''}}
-function upsertVisit(r){const v=visitFromRequest(r),i=visits.findIndex(x=>x.requestId===r.id);if(i>=0){const old=visits[i];visits[i]={...old,...v,occurrences:['Finalizada','Em atendimento','Com pendências'].includes(old.status)?old.occurrences:v.occurrences}}else visits.unshift(v);save(KEYV,visits)}function removeVisitForRequest(id){visits=visits.filter(v=>v.requestId!==id);save(KEYV,visits)}function persist(){save(KEYR,requests);save(KEYV,visits);renderRequests();renderVisits()}
-function renderVisits(){const q=($('visitSearch').value||'').toLowerCase();const rows=visits.filter(v=>[v.number,v.requestNumber,v.client,v.technician].join(' ').toLowerCase().includes(q));$('visitCount').textContent=`${rows.length} visita(s)`;$('visitsBody').innerHTML=rows.map(v=>{const canPerform=v.status!=='Finalizada';const pending=v.status==='Com pendências';return `<tr><td><span class="num">${v.number}</span></td><td>${v.requestNumber}</td><td><span class="client">${esc(v.client)}</span><span class="sub">Contrato ${esc(v.contract)}</span></td><td>${fmtDate(v.scheduleDate)}<span class="sub">${v.scheduleTime||'Horário não informado'}</span></td><td>${esc(v.technician||'—')}</td><td><span class="pill ${statusClass(v.status)}">${v.status}</span></td><td><div class="row-actions">${canPerform?`<button class="btn primary small" onclick="performVisit('${v.id}')">${pending?'Retomar Visita':'Realizar Visita'}</button>`:''}${pending?`<button class="btn secondary small" onclick="showVisitRescheduleEditor('${v.id}')">Reagendar</button>`:''}<button class="btn outline small" onclick="viewVisit('${v.id}')">Visualizar</button><button class="btn outline small" onclick="printVisitById('${v.id}')">PDF</button></div></td></tr>`}).join('')||`<tr><td colspan="7" class="empty">Nenhuma visita criada. Agende uma solicitação para gerar a primeira demanda.</td></tr>`}
-function showVisitRescheduleEditor(id){const v=visits.find(x=>x.id===id);$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="kicker">Reagendar pendência</div><h2>${v.number}</h2><p class="sub">A visita continuará vinculada à solicitação ${v.requestNumber} com status “Com pendências” até que todas as ocorrências sejam resolvidas.</p><div class="grid3" style="margin-top:15px"><div class="field"><label>Nova data</label><input id="rvDate" type="date" value="${v.scheduleDate||''}"></div><div class="field"><label>Novo horário</label><input id="rvTime" type="time" value="${v.scheduleTime||''}"></div><div class="field"><label>Técnico responsável</label><input id="rvTech" value="${esc(v.technician||'')}" placeholder="Digite o nome"></div></div><div class="modal-actions"><button class="btn secondary" onclick="closeModal()">Cancelar</button><button class="btn primary" onclick="confirmVisitReschedule('${v.id}')">Confirmar reagendamento</button></div></div></div>`}
-function confirmVisitReschedule(id){const v=visits.find(x=>x.id===id),r=requests.find(x=>x.id===v.requestId);v.scheduleDate=$('rvDate').value;v.scheduleTime=$('rvTime').value;v.technician=$('rvTech').value;v.status='Com pendências';if(r){r.scheduleDate=v.scheduleDate;r.scheduleTime=v.scheduleTime;r.technician=v.technician;r.status='Com pendências'}persist();closeModal();renderVisits()}
-function nextRequestNumber(){const d=new Date(),ds=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`,n=String(requests.length+1).padStart(3,'0');return `SAT-${ds}-${n}`}function newRequest(){editingRequest=null;clearReqForm();$('rfNumber').value=nextRequestNumber();$('rfDate').value=new Date().toISOString().slice(0,10);addOccurrence();$('requestFormNumber').textContent=$('rfNumber').value;go('requestForm')}
-function clearReqForm(){['rfNumber','rfDate','rfRequestedBy','rfType','rfFilledBy','rfClient','rfContract','rfPhone','rfAddress','rfCity','rfUF','rfScheduleDate','rfScheduleTime','rfTechnician'].forEach(id=>$(id).value='');$('rfClass').selectedIndex=0;$('occurrences').innerHTML=''}
-function addOccurrence(data={}){const n=document.querySelectorAll('#occurrences .occurrence').length+1,d=document.createElement('div');d.className='occurrence';d.innerHTML=`<div class="occ-head"><strong>Ocorrência ${String(n).padStart(2,'0')}</strong><button class="btn outline small" type="button" onclick="this.closest('.occurrence').remove();renumberOccurrences()">Remover</button></div><div class="occ-body"><div class="grid2"><div class="field"><label>Ambiente</label><input data-o="environment" value="${esc(data.environment||'')}" placeholder="Descreva o ambiente"></div><div class="field"><label>Pedido Fábrica</label><input data-o="factoryOrder" value="${esc(data.factoryOrder||'')}"></div><div class="field span2"><label>Descrição da ocorrência</label><textarea data-o="description">${esc(data.description||'')}</textarea></div><div class="field span2"><label>Materiais necessários</label><textarea data-o="materials">${esc(data.materials||'')}</textarea></div><div class="field"><label>Data Finalização</label><input type="date" data-o="finishDate" value="${data.finishDate||''}"></div><div class="field"><label>Observação</label><input data-o="notes" value="${esc(data.notes||'')}"></div><div class="field span2"><label>Fotografia / vídeo</label><div class="media-box"><input type="file" accept="image/*,video/*" multiple data-media><div class="sub">Até 15 fotos/vídeos por ocorrência.</div><div class="media-list">${(data.media||[]).map(m=>`<div class="media-thumb">${esc(m.name||'Mídia anexada')}</div>`).join('')}</div></div></div></div></div>`;$('occurrences').appendChild(d)}function renumberOccurrences(){[...document.querySelectorAll('#occurrences .occ-head strong')].forEach((e,i)=>e.textContent=`Ocorrência ${String(i+1).padStart(2,'0')}`)}
-function collectOccurrences(){return[...document.querySelectorAll('#occurrences .occurrence')].map(el=>{const o={};el.querySelectorAll('[data-o]').forEach(x=>o[x.dataset.o]=x.value);const files=[...(el.querySelector('[data-media]')?.files||[])];o.media=files.slice(0,15).map(f=>({name:f.name,type:f.type.startsWith('video')?'video':'image'}));return o})}
-function collectReq(){return{id:editingRequest||crypto.randomUUID(),number:$('rfNumber').value,date:$('rfDate').value,requestedBy:$('rfRequestedBy').value,type:$('rfType').value,filledBy:$('rfFilledBy').value,classif:$('rfClass').value,client:$('rfClient').value,contract:$('rfContract').value,phone:$('rfPhone').value,address:$('rfAddress').value,city:$('rfCity').value,uf:$('rfUF').value,scheduleDate:$('rfScheduleDate').value,scheduleTime:$('rfScheduleTime').value,technician:$('rfTechnician').value,occurrences:collectOccurrences()}}
-function saveRequest(draft){const r=collectReq(),i=requests.findIndex(x=>x.id===r.id),old=i>=0?requests[i]:null;r.status=old?.status||'Cadastrada';r.cancelReason=old?.cancelReason||'';if(r.scheduleDate&&r.scheduleTime&&r.technician&&!draft&&!['Com pendências','Finalizada'].includes(old?.status)){r.status='Agendada'}if(i>=0)requests[i]=r;else requests.unshift(r);if(r.status==='Agendada')upsertVisit(r);save(KEYR,requests);editingRequest=null;go('requests')}
-function editRequest(id){const r=requests.find(x=>x.id===id);editingRequest=id;clearReqForm();const map={rfNumber:'number',rfDate:'date',rfRequestedBy:'requestedBy',rfType:'type',rfFilledBy:'filledBy',rfClient:'client',rfContract:'contract',rfPhone:'phone',rfAddress:'address',rfCity:'city',rfUF:'uf',rfScheduleDate:'scheduleDate',rfScheduleTime:'scheduleTime',rfTechnician:'technician'};Object.entries(map).forEach(([a,b])=>$(a).value=r[b]||'');$('rfClass').value=r.classif;$('requestFormNumber').textContent=r.number;(r.occurrences||[]).forEach(addOccurrence);go('requestForm')}
-function viewRequest(id){const r=requests.find(x=>x.id===id);$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="kicker">Solicitação de assistência</div><h2>${r.number}</h2><div class="detail-banner"><div><small>Cliente</small><strong>${esc(r.client)}</strong></div><div><small>Contrato</small><strong>${esc(r.contract)}</strong></div><div><small>Status</small><strong>${r.status}</strong></div><div><small>Ocorrências</small><strong>${r.occurrences.length}</strong></div></div>${r.occurrences.map((o,i)=>`<div class="preview-block"><strong>Ocorrência ${String(i+1).padStart(2,'0')} — ${esc(o.environment)}</strong><div class="sub">${esc(o.description)}</div></div>`).join('')}<div class="modal-actions"><button class="btn secondary" onclick="closeModal()">Fechar</button><button class="btn primary" onclick="closeModal();editRequest('${r.id}')">Editar</button></div></div></div>`}
-function printRequest(id){viewRequest(id);setTimeout(()=>window.print(),100)}
-function performVisit(id){activeVisit=id;const v=visits.find(x=>x.id===id);if(v.status!=='Com pendências')v.status='Em atendimento';save(KEYV,visits);fillVisit(v);go('visitForm');updateVisitOutcomePreview()}
-function fillVisit(v){$('visitTitle').textContent=v.number;$('visitOrigin').textContent=`Originada automaticamente da solicitação ${v.requestNumber}`;$('vfClient').textContent=v.client;$('vfContract').textContent=v.contract;$('vfSchedule').textContent=`${fmtDate(v.scheduleDate)} · ${v.scheduleTime||'—'}`;$('vfTechnician').textContent=v.technician||'—';$('vfAddress').value=v.address||'';$('vfEntry').value=v.entry||'';$('vfExit').value=v.exit||'';$('vfKmStart').value=v.kmStart||'';$('vfKmEnd').value=v.kmEnd||'';$('vfNotes').value=v.notes||'';$('visitOccurrences').innerHTML='';(v.occurrences||[]).forEach((o,i)=>addVisitOccurrence(o,i));setTimeout(updateVisitOutcomePreview,0)}
-function addVisitOccurrence(o,i){const d=document.createElement('div');d.className='occurrence';d.innerHTML=`<div class="occ-head"><strong>Ocorrência ${String(i+1).padStart(2,'0')} — ${esc(o.environment||'Ambiente não informado')}</strong><span class="tag">Herdada</span></div><div class="occ-body"><div class="grid2"><div class="field span2"><label>Descrição da ocorrência</label><textarea readonly>${esc(o.description||'')}</textarea></div><div class="field span2"><label>Materiais previstos</label><textarea readonly>${esc(o.materials||'')}</textarea></div><div class="field"><label>Pedido Fábrica</label><input readonly value="${esc(o.factoryOrder||'')}"></div><div class="field"><label>Observação original</label><input readonly value="${esc(o.notes||'')}"></div><div class="field span2"><label>Fotos/vídeos anexados na solicitação</label><div class="media-box"><div class="media-list">${(o.media||[]).length?(o.media||[]).map(m=>`<div class="media-thumb">${m.type==='video'?'▶ Vídeo':'▧ Foto'}<br>${esc(m.name||'')}</div>`).join(''):'<div class="sub">Nenhuma mídia anexada.</div>'}</div></div></div></div><div class="resolution"><div class="resolution-grid"><div class="field"><label>Resultado desta ocorrência</label><select data-v="result" onchange="toggleReason(this);updateVisitOutcomePreview()"><option value="">Selecionar...</option><option ${o.result==='Resolvido'?'selected':''}>Resolvido</option><option ${o.result==='Não resolvido'?'selected':''}>Não resolvido</option></select></div><div class="field reason ${o.result==='Não resolvido'?'':'hidden'}"><label>Motivo / pendência</label><textarea data-v="reason">${esc(o.reason||'')}</textarea></div></div><div class="field" style="margin-top:11px"><label>Novas fotos/vídeos após execução</label><div class="media-box"><input data-v-media type="file" accept="image/*,video/*" multiple><div class="sub">Anexe registros da intervenção executada, resultado ou pendência.</div></div></div></div></div>`;$('visitOccurrences').appendChild(d)}function toggleReason(s){s.closest('.resolution').querySelector('.reason').classList.toggle('hidden',s.value!=='Não resolvido')}function updateVisitOutcomePreview(){const values=[...document.querySelectorAll('#visitOccurrences [data-v="result"]')].map(x=>x.value);const pending=values.length===0||values.some(v=>v!=='Resolvido');$('vfOutcomeTitle').textContent=pending?'Status previsto: Com pendências':'Status previsto: Finalizada';$('vfOutcomeText').textContent=pending?'Existe ao menos uma ocorrência não resolvida ou ainda sem avaliação. Ao salvar, a visita e a solicitação de origem ficarão “Com pendências” e a visita poderá ser reagendada.':'Todas as ocorrências estão resolvidas. Ao salvar, a visita e a solicitação de origem serão marcadas como “Finalizada”.'}
-function collectVisitOccurrences(v){return[...document.querySelectorAll('#visitOccurrences .occurrence')].map((el,i)=>{const base={...(v.occurrences[i]||{})};base.result=el.querySelector('[data-v="result"]').value;base.reason=el.querySelector('[data-v="reason"]')?.value||'';const files=[...(el.querySelector('[data-v-media]')?.files||[])];base.executionMedia=files.slice(0,15).map(f=>({name:f.name,type:f.type.startsWith('video')?'video':'image'}));return base})}
-function saveVisit(){const v=visits.find(x=>x.id===activeVisit);v.entry=$('vfEntry').value;v.exit=$('vfExit').value;v.kmStart=$('vfKmStart').value;v.kmEnd=$('vfKmEnd').value;v.notes=$('vfNotes').value;v.occurrences=collectVisitOccurrences(v);const hasPending=v.occurrences.length===0||v.occurrences.some(o=>o.result!=='Resolvido');v.status=hasPending?'Com pendências':'Finalizada';const r=requests.find(x=>x.id===v.requestId);if(r){r.status=v.status;r.occurrences=(r.occurrences||[]).map((o,i)=>({...o,result:v.occurrences[i]?.result||'',reason:v.occurrences[i]?.reason||'',executionMedia:v.occurrences[i]?.executionMedia||[]}));if(!hasPending)r.finalizedAt=new Date().toISOString()}save(KEYV,visits);save(KEYR,requests);activeVisit=null;go('visits');showVisitOutcome(v)}
-function showVisitOutcome(v){const pending=v.status==='Com pendências';$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="kicker">Visita salva</div><h2>${pending?'Atendimento com pendências':'Atendimento finalizado'}</h2><div class="outcome-box"><strong>Status aplicado: ${v.status}</strong><span class="sub">O mesmo status foi aplicado automaticamente à solicitação ${v.requestNumber}.</span></div><p>${pending?'Há ocorrência(s) não resolvida(s). A visita permanece disponível para edição e pode ser reagendada pelo painel de Visitas Técnicas.':'Todas as ocorrências foram resolvidas. A visita e a solicitação foram encerradas como finalizadas.'}</p><div class="modal-actions"><button class="btn primary" onclick="closeModal()">Entendi</button></div></div></div>`}
-function viewVisit(id){const v=visits.find(x=>x.id===id),isFinal=v.status==='Finalizada',isPending=v.status==='Com pendências';$('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="kicker">Visita técnica</div><h2>${v.number}</h2><div class="detail-banner"><div><small>Solicitação</small><strong>${v.requestNumber}</strong></div><div><small>Cliente</small><strong>${esc(v.client)}</strong></div><div><small>Agendamento</small><strong>${fmtDate(v.scheduleDate)} ${v.scheduleTime||''}</strong></div><div><small>Status</small><strong>${v.status}</strong></div></div>${v.occurrences.map((o,i)=>`<div class="preview-block"><strong>Ocorrência ${String(i+1).padStart(2,'0')} — ${esc(o.environment||'')}</strong><div class="sub">${esc(o.description||'')} · Resultado: ${esc(o.result||'Pendente')}${o.reason?' · '+esc(o.reason):''}</div></div>`).join('')}<div class="modal-actions"><button class="btn secondary" onclick="closeModal()">Fechar</button>${isPending?`<button class="btn secondary" onclick="closeModal();showVisitRescheduleEditor('${v.id}')">Reagendar</button>`:''}${!isFinal?`<button class="btn primary" onclick="closeModal();performVisit('${v.id}')">${isPending?'Retomar visita':'Abrir visita'}</button>`:''}</div></div></div>`}
-function printVisit(){window.print()}function printVisitById(id){viewVisit(id);setTimeout(()=>window.print(),100)}
-renderRequests();renderVisits();
-</script>
-
-<script>
-(function(){
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function(){ navigator.serviceWorker.register('./service-worker.js').catch(function(){}); });
-  }
-  function netState(){
-    let c=document.getElementById('offlineChip');
-    if(!navigator.onLine){if(!c){c=document.createElement('div');c.id='offlineChip';c.className='offline-chip';c.textContent='Modo offline';document.body.appendChild(c)}}
-    else if(c)c.remove();
-  }
-  window.addEventListener('online',netState);window.addEventListener('offline',netState);netState();
-})();
-</script>
-</body></html>
+<script src="app.js"></script>
+</body>
+</html>

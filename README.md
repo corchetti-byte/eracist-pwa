@@ -1,29 +1,22 @@
-# VerAcist PWA
+# VerAcist PWA — versão de avaliação
 
-Aplicativo web instalável para gestão de solicitações de assistência técnica e visitas técnicas.
+Versão local-first do portal VerAcist para Solicitações de Assistência e Visitas Técnicas.
 
-## Incluído
-- Portal inicial
-- Painel de solicitações
-- Cadastro/edição/cancelamento/agendamento
-- Criação automática de visita ao confirmar agendamento
-- Painel de visitas
-- Execução de ocorrências
-- Status automáticos: Com pendências / Finalizada
-- Reagendamento de pendências
-- Impressão/PDF
-- Manifesto PWA + ícones
-- Service Worker + cache offline
-- Configuração Netlify
-
-## Armazenamento
-Esta versão é um MVP local-first. Dados operacionais ficam no armazenamento local do navegador/aparelho. Para produção multiusuário e sincronização entre técnicos, conectar um backend (Supabase/Firebase/Postgres) e storage de mídia.
+## Correções desta versão
+- Fotos e vídeos por ocorrência com pré-visualização imediata e persistência em IndexedDB.
+- Fotos e vídeos adicionais durante a execução da visita.
+- Assinaturas desenháveis de vistoriador e cliente por toque, Apple Pencil ou mouse.
+- Visualização completa de solicitações e visitas diretamente pelos grids.
+- Impressão/PDF com conteúdo completo, fotos, status, ocorrências e assinaturas.
+- Identidade visual Veraci com logo e background fornecidos.
+- PWA com manifesto, service worker, cache offline e ícones iOS.
 
 ## Teste local
-```bash
-python3 -m http.server 8080
-```
-Abra http://localhost:8080
+Execute na pasta:
 
-## Publicação
-A pasta pode ser publicada como site estático no Netlify, Vercel, Firebase Hosting ou servidor HTTPS.
+    python3 -m http.server 8080
+
+Abra `http://localhost:8080`.
+
+## Observação
+Os cadastros ficam em localStorage e as mídias em IndexedDB no aparelho. Para uso multiusuário em produção, conectar backend (Supabase/Firebase) e armazenamento de objetos.
